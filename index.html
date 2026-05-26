@@ -755,165 +755,106 @@ section{padding:110px 44px}
   background: var(--bg);
   padding: 120px 44px;
 }
-.process-flow-container {
-  max-width: 900px;
-  margin: 60px auto 0;
-  position: relative;
-}
-.process-track {
-  position: absolute;
-  left: 28px;
-  top: 15px;
-  bottom: 15px;
-  width: 2px;
-  background: rgba(255,255,255,0.06);
-}
-.process-progress-line {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 0%;
-  background: linear-gradient(to bottom, transparent, var(--accent) 50%, var(--accent));
-  transition: height 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-  box-shadow: 0 0 12px var(--accent);
-}
-.process-steps {
+.process-list {
   display: flex;
   flex-direction: column;
-  gap: 80px;
+  max-width: 1000px;
+  margin: 64px auto 0;
+  border-top: 1px solid var(--border);
 }
-.process-step {
+.process-row {
   display: grid;
-  grid-template-columns: 80px 1fr;
-  align-items: start;
+  grid-template-columns: 120px 1fr 1fr;
+  gap: 40px;
+  padding: 60px 0;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.4s ease;
   position: relative;
-  transition: opacity 0.5s ease;
-}
-.process-meta {
-  display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 12px;
-  position: relative;
 }
-.process-num {
-  font-family: var(--ff-mono);
-  font-size: 14px;
-  letter-spacing: 0.1em;
-  color: var(--muted);
-  transition: color 0.3s ease;
+.process-row:hover {
+  background: rgba(255,255,255,0.01);
 }
-.process-dot-wrapper {
-  width: 58px;
-  height: 58px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-.process-dot {
-  width: 8px;
-  height: 8px;
-  background: var(--border-h);
-  border-radius: 50%;
-  border: 2px solid var(--bg);
-  z-index: 2;
-  transition: background 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease;
-}
-.process-step:hover .process-dot {
-  background: var(--accent);
-  transform: scale(1.5);
-  box-shadow: 0 0 14px var(--accent);
-}
-.process-step:hover .process-num {
-  color: var(--accent);
-}
-.process-step.active .process-dot {
-  background: var(--accent);
-  box-shadow: 0 0 10px var(--accent);
-}
-.process-content {
-  padding-left: 20px;
-  transition: transform 0.3s ease;
-}
-.process-step:hover .process-content {
-  transform: translateX(8px);
-}
-.process-title {
+.pr-num {
   font-family: var(--ff-disp);
-  font-size: clamp(24px, 3.5vw, 36px);
-  font-weight: 300;
-  font-style: italic;
-  letter-spacing: -0.01em;
-  color: var(--fg);
-  margin-bottom: 12px;
-  transition: color 0.3s ease;
-}
-.process-step:hover .process-title {
-  color: var(--accent);
-}
-.process-desc {
-  font-size: 14.5px;
-  line-height: 1.7;
+  font-size: 80px;
+  line-height: 0.8;
   color: var(--muted);
-  font-weight: 300;
-  max-width: 680px;
-  margin-bottom: 20px;
+  opacity: 0.3;
+  transition: all 0.4s ease;
 }
-.process-deliverables {
+.process-row:hover .pr-num {
+  color: var(--accent);
+  opacity: 1;
+}
+.pr-content {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  justify-content: center;
 }
-.deliv-label {
+.pr-title {
+  font-family: var(--ff-disp);
+  font-size: clamp(24px, 2.5vw, 32px);
+  font-style: italic;
+  font-weight: 300;
+  color: var(--fg);
+  margin-bottom: 16px;
+  transition: color 0.4s ease;
+}
+.process-row:hover .pr-title {
+  color: var(--accent);
+}
+.pr-desc {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--muted);
+  font-weight: 300;
+}
+.pr-deliv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.pr-deliv-label {
   font-family: var(--ff-mono);
   font-size: 9px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--muted);
+  margin-bottom: 16px;
 }
-.deliv-pills {
+.pr-pills {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
 }
-.deliv-pill {
+.pr-pill {
   font-family: var(--ff-mono);
   font-size: 9px;
   letter-spacing: 0.05em;
-  padding: 4px 12px;
+  padding: 6px 14px;
   border-radius: 100px;
-  background: rgba(255,255,255,0.02);
   border: 1px solid var(--border);
   color: var(--muted);
+  background: rgba(255,255,255,0.02);
   transition: all 0.3s ease;
 }
-.process-step:hover .deliv-pill {
-  border-color: rgba(200,255,87,0.15);
-  background: rgba(200,255,87,0.02);
+.process-row:hover .pr-pill {
+  border-color: rgba(200,255,87,0.3);
+  background: rgba(200,255,87,0.05);
   color: var(--fg);
 }
-
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   #process {
     padding: 80px 20px;
   }
-  .process-track {
-    left: 18px;
+  .process-row {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 40px 0;
   }
-  .process-step {
-    grid-template-columns: 40px 1fr;
-  }
-  .process-dot-wrapper {
-    width: 38px;
-    height: 38px;
-  }
-  .process-content {
-    padding-left: 12px;
-  }
-  .process-steps {
-    gap: 60px;
+  .pr-num {
+    font-size: 60px;
   }
 }
 
@@ -1478,10 +1419,53 @@ footer{
   </div>
   <div class="about-grid">
     <div class="about-bio reveal">
-      <p>I'm <strong>Atchyuteswar Gottumukkala</strong>, a freelance Full-Stack Developer based in Hyderabad, India. I build <em>AI-powered apps</em> and production-ready web products for clients who need someone to own the full picture — design to deployment.</p>
-      <p>I've shipped real client work: the <strong>Climate Action Front</strong> website for a Delhi-based climate NGO. I also build ambitious personal projects like <strong>Volt</strong> (AI Android nutrition tracker) and <strong>Aira</strong> (emotional support companion) to stay sharp.</p>
-      <p>I'm a CS + Data Science undergrad at MLRITM (class of 2027), which means I bring academic depth in ML/AI alongside production instincts from real client delivery. I'm honest, direct, and I won't promise what I can't deliver.</p>
+      <p>I'm <strong>Atchyuteswar Gottumukkala</strong>, a Full-Stack Developer and CS Data Science undergraduate based in Telangana, India. I specialize in building <em>AI-powered Android apps</em>, robust Web2 & Web3 platforms, and end-to-end client products.</p>
+      <p>My expertise lies in integrating large language models, designing scalable backends with <strong>Supabase</strong> and REST APIs, and leading tech communities across open-source ecosystems. I've shipped platforms like the <strong>Climate Action Front</strong> and innovative projects like <strong>Volt</strong> (AI nutrition tracker) and <strong>Aira</strong> (NLP companion).</p>
+      <p>I bring academic rigor from my data science studies alongside real-world production instincts. Whether it's crafting smart contracts for <strong>Cryptolit</strong> or deploying full-stack systems, I own the process from architecture to deployment.</p>
       <a href="mailto:yt.atchyut@gmail.com?subject=Freelance%20Project%20Enquiry" class="about-cta">Let's work together →</a>
+      
+      <div style="margin-top: 64px;">
+        <div class="detail-h">Education</div>
+        <div class="exp-list">
+          <div class="exp-item">
+            <div class="ei-l">
+              <div class="ei-co">MLRITM, Hyderabad</div>
+              <div class="ei-role">B.Tech CS (Data Science)</div>
+            </div>
+            <div class="ei-yr">2023–27</div>
+          </div>
+          <div class="exp-item">
+            <div class="ei-l">
+              <div class="ei-co">Sri Chaitanya</div>
+              <div class="ei-role">Intermediate MPC</div>
+            </div>
+            <div class="ei-yr">2021–23</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top: 48px;">
+        <div class="detail-h">Tech Stack</div>
+        <div class="skills-wrap">
+          <span class="skill-pill">JavaScript</span>
+          <span class="skill-pill">TypeScript</span>
+          <span class="skill-pill">Python</span>
+          <span class="skill-pill">Kotlin</span>
+          <span class="skill-pill">Next.js / React</span>
+          <span class="skill-pill">React Native / Expo</span>
+          <span class="skill-pill">Node.js</span>
+          <span class="skill-pill">Svelte</span>
+          <span class="skill-pill">FastAPI</span>
+          <span class="skill-pill">Jetpack Compose</span>
+          <span class="skill-pill">PostgreSQL / Supabase</span>
+          <span class="skill-pill">Neon DB / Prisma</span>
+          <span class="skill-pill">Gemini API / Vertex AI</span>
+          <span class="skill-pill">Web3 / Smart Contracts</span>
+          <span class="skill-pill">Docker</span>
+          <span class="skill-pill">GCP / Vercel</span>
+          <span class="skill-pill">Git / GitHub</span>
+        </div>
+      </div>
     </div>
     <div class="about-side reveal reveal-d2">
       <div>
@@ -1492,21 +1476,35 @@ footer{
               <div class="ei-co">Climate Action Front</div>
               <div class="ei-role">Tech Contributor</div>
             </div>
-            <div class="ei-yr">2024</div>
+            <div class="ei-yr">Present</div>
           </div>
           <div class="exp-item">
             <div class="ei-l">
-              <div class="ei-co">Climate Action Front</div>
-              <div class="ei-role">Tech Contributor</div>
+              <div class="ei-co">Big Blockers Community</div>
+              <div class="ei-role">Head of Hyderabad Chapter</div>
+            </div>
+            <div class="ei-yr">2024–25</div>
+          </div>
+          <div class="exp-item">
+            <div class="ei-l">
+              <div class="ei-co">Timechain Labs</div>
+              <div class="ei-role">Blockchain Developer Intern</div>
             </div>
             <div class="ei-yr">2024</div>
           </div>
           <div class="exp-item">
             <div class="ei-l">
-              <div class="ei-co">MLRITM</div>
-              <div class="ei-role">B.Tech CS (Data Science) — 2023–2027</div>
+              <div class="ei-co">Swecha Telangana</div>
+              <div class="ei-role">Scrum Master Intern</div>
             </div>
-            <div class="ei-yr">Ongoing</div>
+            <div class="ei-yr">2024</div>
+          </div>
+          <div class="exp-item">
+            <div class="ei-l">
+              <div class="ei-co">GSSoC 2024</div>
+              <div class="ei-role">Open Source Contributor</div>
+            </div>
+            <div class="ei-yr">2024</div>
           </div>
         </div>
       </div>
@@ -1514,37 +1512,29 @@ footer{
         <div class="detail-h">Certifications</div>
         <div class="aw-list">
           <div class="aw-item">
-            <div class="ei-l"><div class="aw-title">NVIDIA DLI — Deep Learning</div><div class="aw-issuer">NVIDIA</div></div>
+            <div class="ei-l"><div class="aw-title">Generative AI Explained</div><div class="aw-issuer">NVIDIA</div></div>
             <div class="aw-yr">2024</div>
           </div>
           <div class="aw-item">
-            <div class="ei-l"><div class="aw-title">Google Cloud Digital Leader</div><div class="aw-issuer">Google</div></div>
+            <div class="ei-l"><div class="aw-title">Cloud Computing Foundations</div><div class="aw-issuer">Google Cloud</div></div>
             <div class="aw-yr">2024</div>
           </div>
           <div class="aw-item">
-            <div class="ei-l"><div class="aw-title">Cisco Networking Essentials</div><div class="aw-issuer">Cisco</div></div>
+            <div class="ei-l"><div class="aw-title">Data Analytics & Networking</div><div class="aw-issuer">Cisco</div></div>
             <div class="aw-yr">2023</div>
           </div>
-        </div>
-      </div>
-      <div>
-        <div class="detail-h">Tech Stack</div>
-        <div class="skills-wrap">
-          <span class="skill-pill">React / Next.js</span>
-          <span class="skill-pill">Node.js</span>
-          <span class="skill-pill">Python</span>
-          <span class="skill-pill">Kotlin</span>
-          <span class="skill-pill">FastAPI</span>
-          <span class="skill-pill">Svelte</span>
-          <span class="skill-pill">Jetpack Compose</span>
-          <span class="skill-pill">PostgreSQL</span>
-          <span class="skill-pill">Supabase</span>
-          <span class="skill-pill">Gemini API</span>
-          <span class="skill-pill">Vertex AI</span>
-          <span class="skill-pill">TypeScript</span>
-          <span class="skill-pill">Docker</span>
-          <span class="skill-pill">Vercel</span>
-          <span class="skill-pill">GCP</span>
+          <div class="aw-item">
+            <div class="ei-l"><div class="aw-title">Copilot for Security Ninja</div><div class="aw-issuer">Microsoft</div></div>
+            <div class="aw-yr">2024</div>
+          </div>
+          <div class="aw-item">
+            <div class="ei-l"><div class="aw-title">API Fundamentals Expert</div><div class="aw-issuer">Postman</div></div>
+            <div class="aw-yr">2024</div>
+          </div>
+          <div class="aw-item">
+            <div class="ei-l"><div class="aw-title">EF SET English C1 Advanced</div><div class="aw-issuer">EF Standard English Test</div></div>
+            <div class="aw-yr">2024</div>
+          </div>
         </div>
       </div>
     </div>
@@ -1560,93 +1550,71 @@ footer{
     </div>
   </div>
   
-  <div class="process-flow-container reveal">
-    <div class="process-track">
-      <div class="process-progress-line" id="processProgress"></div>
+  <div class="process-list">
+    <!-- Step 1 -->
+    <div class="process-row reveal">
+      <div class="pr-num">01</div>
+      <div class="pr-content">
+        <h3 class="pr-title">Discovery Call</h3>
+        <p class="pr-desc">We talk through your idea, goals, and constraints. I ask the questions most devs skip — and give you an honest scope &amp; timeline estimate.</p>
+      </div>
+      <div class="pr-deliv">
+        <span class="pr-deliv-label">Deliverables:</span>
+        <div class="pr-pills">
+          <span class="pr-pill">Technical Feasibility Check</span>
+          <span class="pr-pill">Scope Strategy</span>
+          <span class="pr-pill">Rough Estimate</span>
+        </div>
+      </div>
     </div>
     
-    <div class="process-steps">
-      <div class="process-step reveal" data-step="1">
-        <div class="process-meta">
-          <span class="process-num">01</span>
-          <div class="process-dot-wrapper">
-            <div class="process-dot"></div>
-          </div>
-        </div>
-        <div class="process-content">
-          <h3 class="process-title">Discovery Call</h3>
-          <p class="process-desc">We talk through your idea, goals, and constraints. I ask the questions most devs skip — and give you an honest scope &amp; timeline estimate.</p>
-          <div class="process-deliverables">
-            <span class="deliv-label">Deliverables:</span>
-            <div class="deliv-pills">
-              <span class="deliv-pill">Technical Feasibility Check</span>
-              <span class="deliv-pill">Scope Strategy</span>
-              <span class="deliv-pill">Rough Estimate</span>
-            </div>
-          </div>
+    <!-- Step 2 -->
+    <div class="process-row reveal">
+      <div class="pr-num">02</div>
+      <div class="pr-content">
+        <h3 class="pr-title">Proposal &amp; Scope</h3>
+        <p class="pr-desc">A clear written proposal: what I'll build, how long, and what it costs. No hidden extras. You approve before anything starts.</p>
+      </div>
+      <div class="pr-deliv">
+        <span class="pr-deliv-label">Deliverables:</span>
+        <div class="pr-pills">
+          <span class="pr-pill">Detailed Feature Spec</span>
+          <span class="pr-pill">Fixed Price Quote</span>
+          <span class="pr-pill">Milestone Roadmap</span>
         </div>
       </div>
-      
-      <div class="process-step reveal" data-step="2">
-        <div class="process-meta">
-          <span class="process-num">02</span>
-          <div class="process-dot-wrapper">
-            <div class="process-dot"></div>
-          </div>
-        </div>
-        <div class="process-content">
-          <h3 class="process-title">Proposal &amp; Scope</h3>
-          <p class="process-desc">A clear written proposal: what I'll build, how long, and what it costs. No hidden extras. You approve before anything starts.</p>
-          <div class="process-deliverables">
-            <span class="deliv-label">Deliverables:</span>
-            <div class="deliv-pills">
-              <span class="deliv-pill">Detailed Feature Spec</span>
-              <span class="deliv-pill">Fixed Price Quote</span>
-              <span class="deliv-pill">Milestone Roadmap</span>
-            </div>
-          </div>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="process-row reveal">
+      <div class="pr-num">03</div>
+      <div class="pr-content">
+        <h3 class="pr-title">Build &amp; Update</h3>
+        <p class="pr-desc">I build in focused sprints and send regular progress updates. You can review and give feedback at each milestone — nothing ships blind.</p>
+      </div>
+      <div class="pr-deliv">
+        <span class="pr-deliv-label">Deliverables:</span>
+        <div class="pr-pills">
+          <span class="pr-pill">Bi-weekly Staging Demos</span>
+          <span class="pr-pill">Progress Reports</span>
+          <span class="pr-pill">Interactive Feedback Loops</span>
         </div>
       </div>
-      
-      <div class="process-step reveal" data-step="3">
-        <div class="process-meta">
-          <span class="process-num">03</span>
-          <div class="process-dot-wrapper">
-            <div class="process-dot"></div>
-          </div>
-        </div>
-        <div class="process-content">
-          <h3 class="process-title">Build &amp; Update</h3>
-          <p class="process-desc">I build in focused sprints and send regular progress updates. You can review and give feedback at each milestone — nothing ships blind.</p>
-          <div class="process-deliverables">
-            <span class="deliv-label">Deliverables:</span>
-            <div class="deliv-pills">
-              <span class="deliv-pill">Bi-weekly Staging Demos</span>
-              <span class="deliv-pill">Progress Reports</span>
-              <span class="deliv-pill">Interactive Feedback Loops</span>
-            </div>
-          </div>
-        </div>
+    </div>
+
+    <!-- Step 4 -->
+    <div class="process-row reveal">
+      <div class="pr-num">04</div>
+      <div class="pr-content">
+        <h3 class="pr-title">Deliver &amp; Support</h3>
+        <p class="pr-desc">Full handoff: clean code, docs, deployment. Two weeks post-launch support included so you're never left hanging.</p>
       </div>
-      
-      <div class="process-step reveal" data-step="4">
-        <div class="process-meta">
-          <span class="process-num">04</span>
-          <div class="process-dot-wrapper">
-            <div class="process-dot"></div>
-          </div>
-        </div>
-        <div class="process-content">
-          <h3 class="process-title">Deliver &amp; Support</h3>
-          <p class="process-desc">Full handoff: clean code, docs, deployment. Two weeks post-launch support included so you're never left hanging.</p>
-          <div class="process-deliverables">
-            <span class="deliv-label">Deliverables:</span>
-            <div class="deliv-pills">
-              <span class="deliv-pill">Production Deployment</span>
-              <span class="deliv-pill">Source Code Handoff</span>
-              <span class="deliv-pill">14-Day Post-Launch Support</span>
-            </div>
-          </div>
+      <div class="pr-deliv">
+        <span class="pr-deliv-label">Deliverables:</span>
+        <div class="pr-pills">
+          <span class="pr-pill">Production Deployment</span>
+          <span class="pr-pill">Source Code Handoff</span>
+          <span class="pr-pill">14-Day Post-Launch Support</span>
         </div>
       </div>
     </div>
